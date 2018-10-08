@@ -7,7 +7,8 @@
     "test": "./node_modules/.bin/mocha"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "git+https://github.com/PrasannaDommalapati/tdd-starter.git"
   },
   "author": "Prasanna Kumar",
   "license": "MIT",
