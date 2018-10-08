@@ -1,3 +1,5 @@
 export default function sayHello(name) {
-    return `Hello, ${name}!`;
+
+	return Promise.resolve()
+				  .then(() => `Hello, ${name}!`);
 }
