@@ -1,25 +1,28 @@
 {
-  "name": "tdd-starter-setup",
-  "version": "1.0.0",
-  "description": "A starter repository for test-driving JavaScript code",
-  "main": "index.js",
-  "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PrasannaDommalapati/tdd-starter.git"
-  },
-  "author": "Prasanna Kumar",
-  "license": "MIT",
-  "bugs": {},
-  "devDependencies": {
-    "babel-preset-es2015": "^6.13.2",
-    "babel-register": "^6.11.6",
-    "chai": "^3.5.0",
-    "chance": "^1.0.4",
-    "faker": "^4.1.0",
-    "karma": "^3.0.0",
-    "mocha": "^3.0.2"
-  }
+    "name": "tdd-starter-setup",
+    "version": "1.0.0",
+    "description": "A starter repository for test-driving JavaScript code",
+    "main": "index.js",
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --reporter spec --no-deprecation",
+        "karma": "./node_modules/karma/bin/karma start karma.config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PrasannaDommalapati/tdd-starter.git"
+    },
+    "author": "Prasanna Kumar",
+    "license": "MIT",
+    "bugs": {},
+    "devDependencies": {
+        "babel-preset-es2015": "^6.13.2",
+        "babel-register": "^6.11.6",
+        "chai": "^3.5.0",
+        "faker": "^4.1.0",
+        "jasmine-core": "^3.2.1",
+        "karma": "^3.0.0",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-jasmine": "^1.1.2",
+        "mocha": "*"
+    }
 }
