@@ -44,5 +44,28 @@ describe('Project Euler', () => {
     	expect(math.twoToOne('loopingisfunbutdangerous', 'lessdangerousthancoding')).to.be.equal('abcdefghilnoprstu');
 	});
 
+    it('should return the vowel count',()=>{
+        expect(math.vowelCount('abracadabra')).to.be.equal(5);
+    });
+
+    it('should return the consonant count',()=>{
+        expect(math.consonantCount('abracadabra')).to.be.equal(6);
+    });
+
+    it('should test a string has same number of x  and O' ,()=>{
+
+        expect(math.xoCount('xo')).to.be.true;
+        expect(math.xoCount('xxOo')).to.be.true;
+        expect(math.xoCount('xxxm')).to.be.false;
+        expect(math.xoCount('Oo')).to.be.false;
+        expect(math.xoCount('ooom')).to.be.false;
+    });
+
+    it('should remove the minimum or smallest value of an array',()=>{
+        expect(math.removeSmallest([1, 2, 3, 4, 5])).to.deep.equal([2, 3, 4, 5]);
+        expect(math.removeSmallest([5, 3, 2, 1, 4])).to.deep.equal([5, 3, 2, 4]);
+        expect(math.removeSmallest([2, 2, 1, 2, 1])).to.deep.equal([2, 2, 2, 1]);
+        expect(math.removeSmallest([])).to.deep.equal([]);
+    });
 
 });
