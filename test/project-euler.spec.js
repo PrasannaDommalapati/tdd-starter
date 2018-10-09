@@ -26,5 +26,23 @@ describe('Project Euler', () => {
     	expect(math.isMultipleOfThree(5)).to.be.false;
 	});
 
+    it('is the smallest number divisible by 1-20', ()=>{
+
+    	expect(math.divisibleByOneToTwenty(20)).to.be.equal(232792560);
+	});
+
+    it('should give the sum of two lowest numbers of array', ()=>{
+
+    	expect(math.sumOfLowestIntegers([5, 8, 12, 19, 22])).to.be.equal(13);
+    	expect(math.sumOfLowestIntegers([15, 28, 4, 2, 43])).to.be.equal(6);
+    	expect(math.sumOfLowestIntegers([3, 87, 45, 12, 7])).to.be.equal(10);
+
+	});
+
+    it('should return longest',()=>{
+    	expect(math.twoToOne('aretheyhere', 'yestheyarehere')).to.be.equal('aehrsty');
+    	expect(math.twoToOne('loopingisfunbutdangerous', 'lessdangerousthancoding')).to.be.equal('abcdefghilnoprstu');
+	});
+
 
 });
