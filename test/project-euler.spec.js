@@ -49,10 +49,11 @@ describe('Project Euler', () => {
     });
 
     it('should return the consonant count',()=>{
+
         expect(math.consonantCount('abracadabra')).to.be.equal(6);
     });
 
-    it('should test a string has same number of x  and O' ,()=>{
+    it('should test a string has same number of x  and o' ,()=>{
 
         expect(math.xoCount('xo')).to.be.true;
         expect(math.xoCount('xxOo')).to.be.true;
@@ -62,6 +63,7 @@ describe('Project Euler', () => {
     });
 
     it('should remove the minimum or smallest value of an array',()=>{
+
         expect(math.removeSmallest([1, 2, 3, 4, 5])).to.deep.equal([2, 3, 4, 5]);
         expect(math.removeSmallest([5, 3, 2, 1, 4])).to.deep.equal([5, 3, 2, 4]);
         expect(math.removeSmallest([2, 2, 1, 2, 1])).to.deep.equal([2, 2, 2, 1]);
@@ -69,10 +71,39 @@ describe('Project Euler', () => {
     });
 
     it('should return friend or foe',()=>{
+
     	expect(math.friendOrFoe(["Ryan", "Kieran", "Mark"])).to.deep.equal(["Ryan", "Mark"]);
     	expect(math.friendOrFoe(["Ryan", "Jimmy", "123", "4", "Cool Man"])).to.deep.equal(["Ryan"]);
     	expect(math.friendOrFoe(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"])).to.deep.equal(["Jimm", "Cari", "aret"]);
     	expect(math.friendOrFoe(["Love", "Your", "Face", "1"])).to.deep.equal(["Love", "Your", "Face"]);
+	});
+
+    it('should return the category of the member',()=>{
+
+		expect(math.openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]])).to.deep.equal(['Open', 'Senior', 'Open', 'Senior']);
+	});
+
+    it('should give me the list of anagrams',()=> {
+
+		expect(math.anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada'])).to.deep.equal(['aabb', 'bbaa']);
+	});
+
+    it('should take you to a 10 min walk',() => {
+
+		expect(math.isValidWalk(['n','s','n','s','n','s','n','s','n','s'])).to.be.true;
+		expect(!math.isValidWalk(['n','s','n','s','n','s','n','s','n','s'])).to.be.false;
+	});
+
+    it('should give you the position of the different number from array of numbers',() =>{
+
+    	expect(math.iqTest([2,4,7,8,10])).to.be.equal(2);
+    	expect(math.iqTest([1,2,1,1])).to.be.equal(1);
+	});
+
+    it('should give you the position of the different number',() =>{
+
+    	expect(math.iqTest2('2 4 7 8 10')).to.be.equal(3);
+    	expect(math.iqTest2('1 2 1 1')).to.be.equal(2);
 	});
 
 });

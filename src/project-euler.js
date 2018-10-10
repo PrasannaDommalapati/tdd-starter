@@ -9,7 +9,12 @@ module.exports = {
     consonantCount,
     xoCount,
     removeSmallest,
-	friendOrFoe
+	friendOrFoe,
+	openOrSenior,
+	anagrams,
+	isValidWalk,
+	iqTest,
+	iqTest2,
 };
 
 function sum(number1, number2) {
@@ -108,4 +113,91 @@ function friendOrFoe(friendNames) {
 	});
 
 	return fof;
+}
+
+function openOrSenior(list) {
+
+	// let result = [];
+	//
+	// list.forEach(sublist =>{
+	//
+	// 	if((sublist[0] >=55) && (sublist[1] >7)) {
+	//
+	// 		result.push('Senior');
+	// 	} else {
+	// 		result.push('Open');
+	// 	}
+	//
+	// });
+
+	 return list.map(([age,handicap]) => (age >= 55 && handicap >7) ? 'Senior': 'Open');
+
+}
+
+function anagrams(word, words) {
+
+	return words.filter(item => {
+		return item.split('').sort().join('') === word.split('').sort().join('');
+	});
+}
+
+function isValidWalk(walk) {
+
+	let north = 0,
+		south = 0,
+		west  = 0,
+		east  = 0;
+
+	for (let i = 0; i < walk.length; i++) {
+
+		switch(walk[i]){
+			case 'n':
+				north++;
+				break;
+			case 's':
+				south++;
+				break;
+			case 'w':
+				west++;
+				break;
+			case 'e':
+				east++;
+				break;
+			default:
+				return false;
+		}
+	}
+
+	return  (walk.length === 10) && (north === south && east === west);
+}
+
+function iqTest(numbers) {
+
+	let odPos = [],
+	evenPos = [];
+
+	numbers.forEach((number,index) => {
+
+		(number % 2 === 1) && odPos.push(index);
+		(number % 2 === 0) && evenPos.push(index);
+	});
+
+	return odPos.length < evenPos.length ? odPos[0]: evenPos[0];
+}
+
+function iqTest2(numbers) {
+
+
+	let odPos = [],
+		evenPos = [];
+
+	let numArray = numbers.split(' ');
+	numArray.map((number, index) => {
+
+		(number % 2 === 1) && odPos.push(index+1);
+		(number % 2 === 0) && evenPos.push(index+1);
+	});
+
+	return odPos.length < evenPos.length ? odPos[0]: evenPos[0];
+
 }
