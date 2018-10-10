@@ -68,4 +68,11 @@ describe('Project Euler', () => {
         expect(math.removeSmallest([])).to.deep.equal([]);
     });
 
+    it('should return friend or foe',()=>{
+    	expect(math.friendOrFoe(["Ryan", "Kieran", "Mark"])).to.deep.equal(["Ryan", "Mark"]);
+    	expect(math.friendOrFoe(["Ryan", "Jimmy", "123", "4", "Cool Man"])).to.deep.equal(["Ryan"]);
+    	expect(math.friendOrFoe(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"])).to.deep.equal(["Jimm", "Cari", "aret"]);
+    	expect(math.friendOrFoe(["Love", "Your", "Face", "1"])).to.deep.equal(["Love", "Your", "Face"]);
+	});
+
 });

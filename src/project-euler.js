@@ -1,14 +1,15 @@
 module.exports = {
-	sum                    :sum,
-	isMultipleOfThree      :isMultipleOfThree,
-	multiple3or5           :multiple3or5,
-	divisibleByOneToTwenty :divisibleByOneToTwenty,
-	sumOfLowestIntegers    :sumOfLowestIntegers,
-	twoToOne               :twoToOne,
-    vowelCount             :vowelCount,
-    consonantCount         :consonantCount,
-    xoCount                :xoCount,
-    removeSmallest         :removeSmallest
+	sum,
+	isMultipleOfThree,
+	multiple3or5,
+	divisibleByOneToTwenty,
+	sumOfLowestIntegers,
+	twoToOne,
+    vowelCount,
+    consonantCount,
+    xoCount,
+    removeSmallest,
+	friendOrFoe
 };
 
 function sum(number1, number2) {
@@ -57,7 +58,6 @@ function sumOfLowestIntegers(numbers) {
 	numbers.sort((a,b)=>a-b);
 
 	return numbers[0] + numbers[1];
-
 }
 
 function twoToOne(str1, str2) {
@@ -65,20 +65,19 @@ function twoToOne(str1, str2) {
     return str1.concat(str2)
 		.split('')
 		.sort()
-		.filter((item, pos, self) => self.indexOf(item) == pos)
+		.filter((item, index, self) => self.indexOf(item) == index)
 		.join('');
-
 }
 
 function vowelCount(name) {
+
 	let vowelMatch = name.match(/[aeiou]/gi);
 	return (vowelMatch == null) ? 0:vowelMatch.length;
-
 }
 function consonantCount(name) {
+
 	let consonantMatch = name.match(/[b-df-hj-np-tv-z]/gi);
 	return (consonantMatch == null) ? 0 : consonantMatch.length;
-
 }
 function xoCount(xoString) {
 
@@ -99,5 +98,14 @@ function removeSmallest(numbers) {
 
 }
 
+function friendOrFoe(friendNames) {
 
+	let fof = [];
 
+	friendNames.forEach(friend => {
+
+		(friend.length === 4) && fof.push(friend);
+	});
+
+	return fof;
+}
