@@ -106,4 +106,35 @@ describe('Project Euler', () => {
     	expect(math.iqTest2('1 2 1 1')).to.be.equal(2);
 	});
 
+    it('should return the sorted odd numbers',() => {
+
+    	expect(math.sortArray([5, 3, 2, 8, 1, 4])).to.deep.equal([1, 3, 2, 8, 5, 4]);
+    	expect(math.sortArray([5, 3, 1, 8, 0])).to.deep.equal([1, 3, 5, 8, 0]);
+    	expect(math.sortArray([])).to.deep.equal([]);
+	});
+
+    it('should return camel case text',()=>{
+
+    	expect(math.camelCase('hello world')).to.be.equal('HelloWorld');
+    	expect(math.camelCase('camel case method')).to.be.equal('CamelCaseMethod');
+	});
+
+    it('should return snake case words camel case word',()=>{
+
+    	expect(math.snakeToCamelCase('hello_world')).to.be.equal('HelloWorld');
+    	expect(math.snakeToCamelCase('camel_case_method')).to.be.equal('CamelCaseMethod');
+	});
+
+    it('should decode morse code',() => {
+
+    	expect(math.decodeMorse('.... . -.--   .--- ..- -.. .')).to.be.equal('HEY JUDE');
+
+	});
+
+    it('should encode to morse code',() => {
+
+    	//expect(math.encodeMorse('HEY JUDE')).to.be.equal('.... . -.--   .--- ..- -.. .');
+
+	});
+
 });

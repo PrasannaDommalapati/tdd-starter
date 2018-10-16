@@ -15,6 +15,11 @@ module.exports = {
 	isValidWalk,
 	iqTest,
 	iqTest2,
+	sortArray,
+	camelCase,
+	snakeToCamelCase,
+	encodeMorse,
+	decodeMorse
 };
 
 function sum(number1, number2) {
@@ -199,5 +204,99 @@ function iqTest2(numbers) {
 	});
 
 	return odPos.length < evenPos.length ? odPos[0]: evenPos[0];
+
+}
+
+function sortArray(array) {
+
+	let evenArr = [],
+		 oddArr = [],
+		 result = [];
+
+	array.forEach((number, index) => {
+
+		(number %2 === 0) && evenArr.push(array[index]);
+		(number %2 !== 0) && oddArr.push(array[index]);
+	});
+
+	oddArr.sort((a, b) => a - b);
+
+	array.forEach(number => {
+
+		(number %2 === 0) && result.push(evenArr.shift());
+		(number %2 !== 0) && result.push(oddArr.shift());
+	});
+
+	return result;
+}
+
+function camelCase(str) {
+
+	return str.split(' ').map((word, index) => {
+
+		return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+
+	}).join('');
+}
+
+function snakeToCamelCase(snakeString) {
+
+	return snakeString.split('_').map((word, index) => {
+
+		return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+
+	}).join('');
+
+}
+
+function decodeMorse(codes) {
+
+	let codeToAlpha =  {
+		".-"   : "A", "-..." : "B", "-.-." : "C", "-.."  : "D", "."    : "E",
+		"..-." : "F", "--."  : "G", "...." : "H", ".."   : "I", ".---" : "J",
+		"-.-"  : "K", ".-.." : "L", "--"   : "M", "-."   : "N", "---"  : "O",
+		".--." : "P", "--.-" : "Q", ".-."  : "R", "..."  : "S", "-"    : "T",
+		"..-"  : "U", "...-" : "V", ".--"  : "W", "-..-" : "X", "-.--" : "Y",
+		"--.." : "Z", "-----": "0", ".----": "1", "..---": "2", "...--": "3",
+		"....-": "4", ".....": "5", "-....": "6", "--...": "7", "---..": "8",
+		"----.": "9"
+	};
+
+	let decoded = [];
+
+	 codes.split('   ').map(c => c.split(' ')).forEach(code=> {
+
+	 	code.map(value => {
+
+		return (typeof codeToAlpha[value] === 'undefined') ? '' : decoded.push(codeToAlpha[value]);
+		});
+	});
+
+	 return decoded.join('');
+}
+
+
+function encodeMorse(code) {
+
+	let alphaToCode = {
+		'a': '._',    'b': '_...',  'c': '_._.',  'd': '_..',   'e': '.',     'f': '.._.',
+		'g': '__.',   'h': '....',  'i': '..',    'j': '.___',  'k': '_._',   'l': '._..',
+		'm': '__',    'n': '_.',    'o': '___',   'p': '.__.',  'q': '__._',  'r': '._.',
+		's': '...',   't': '_',     'u': '.._',   'v': '..._',  'w': '.__',   'x': '_.._',
+		'y': '_.__',  'z': '__..',  '0': '_____', '1': '.____', '2': '..___', '3': '...__',
+		'4': '...._', '5': '.....', '6': '_....', '7': '__...', '8': '___..', '9': '____.'
+	};
+
+	let encoded = [];
+
+	code.split(' ').map(c => c.split(' ')).forEach(char=> {
+
+		return (typeof alphaToCode[char] === "undefined") ? "": encoded.push(alphaToCode[char]);
+
+	});
+
+	console.log(encoded);
+
+	return encoded.join('');
 
 }
