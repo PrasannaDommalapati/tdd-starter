@@ -128,6 +128,8 @@ describe('Project Euler', () => {
     it('should decode morse code',() => {
 
     	expect(math.decodeMorse('.... . -.--   .--- ..- -.. .')).to.be.equal('HEY JUDE');
+    	expect(math.decodeMorse('···−−−···')).to.be.equal('SOS');
+
 
 	});
 

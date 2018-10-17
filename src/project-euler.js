@@ -249,7 +249,7 @@ function snakeToCamelCase(snakeString) {
 
 }
 
-function decodeMorse(codes) {
+function decodeMorse(morseSentence) {
 
 	let codeToAlpha =  {
 		".-"   : "A", "-..." : "B", "-.-." : "C", "-.."  : "D", "."    : "E",
@@ -259,20 +259,30 @@ function decodeMorse(codes) {
 		"..-"  : "U", "...-" : "V", ".--"  : "W", "-..-" : "X", "-.--" : "Y",
 		"--.." : "Z", "-----": "0", ".----": "1", "..---": "2", "...--": "3",
 		"....-": "4", ".....": "5", "-....": "6", "--...": "7", "---..": "8",
-		"----.": "9"
+		"----.": "9", "···−−−···"  : "SOS"
 	};
 
 	let decoded = [];
+	let word = []
 
-	 codes.split('   ').map(c => c.split(' ')).forEach(code=> {
 
-	 	code.map(value => {
+	let morseLetters = morseSentence.split('   ').map(c =>  c.split(' '))
 
-		return (typeof codeToAlpha[value] === 'undefined') ? '' : decoded.push(codeToAlpha[value]);
+	morseLetters.forEach((code,index) => {
+
+
+		let letters = [];
+
+		Object.values(code).forEach((key)=> {
+
+			(codeToAlpha[key] !== 'undefined') && letters.push(codeToAlpha[key]);
+
 		});
+
+		decoded[index] = letters.join('');
 	});
 
-	 return decoded.join('');
+	return decoded.join(' ');
 }
 
 
