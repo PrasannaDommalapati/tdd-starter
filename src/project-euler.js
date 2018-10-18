@@ -263,8 +263,6 @@ function decodeMorse(morseSentence) {
 	};
 
 	let decoded = [];
-	let word = []
-
 
 	let morseLetters = morseSentence.split('   ').map(c =>  c.split(' '))
 
