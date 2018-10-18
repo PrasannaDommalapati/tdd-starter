@@ -18,8 +18,13 @@ module.exports = {
 	sortArray,
 	camelCase,
 	snakeToCamelCase,
+	decodeMorse,
 	encodeMorse,
-	decodeMorse
+	stringIncrementer,
+	rot13,
+	inArray,
+	isCheating,
+	permutations
 };
 
 function sum(number1, number2) {
@@ -284,27 +289,127 @@ function decodeMorse(morseSentence) {
 }
 
 
-function encodeMorse(code) {
+function encodeMorse(sentence) {
 
 	let alphaToCode = {
-		'a': '._',    'b': '_...',  'c': '_._.',  'd': '_..',   'e': '.',     'f': '.._.',
-		'g': '__.',   'h': '....',  'i': '..',    'j': '.___',  'k': '_._',   'l': '._..',
-		'm': '__',    'n': '_.',    'o': '___',   'p': '.__.',  'q': '__._',  'r': '._.',
-		's': '...',   't': '_',     'u': '.._',   'v': '..._',  'w': '.__',   'x': '_.._',
-		'y': '_.__',  'z': '__..',  '0': '_____', '1': '.____', '2': '..___', '3': '...__',
-		'4': '...._', '5': '.....', '6': '_....', '7': '__...', '8': '___..', '9': '____.'
+
+		"A": ".-"   , "B": "-..." , "C": "-.-." , "D": "-.."  ,"E": "."    ,
+		"F": "..-." , "G": "--."  , "H": "...." , "I": ".."   ,"J": ".---" ,
+		"K": "-.-"  , "L": ".-.." , "M": "--"   , "N": "-."   ,"O": "---"  ,
+		"P": ".--." , "Q": "--.-" , "R": ".-."  , "S": "..."  ,"T": "-"    ,
+		"U": "..-"  , "V": "...-" , "W": ".--"  , "X": "-..-" ,"Y": "-.--" ,
+		"Z": "--.." , "0": "-----", "1": ".----", "2": "..---","3": "...--",
+		"4": "....-", "5": ".....", "6": "-....", "7": "--...","8": "---..",
+		"9": "----.", "SOS":"···−−−···" ,' ':' '
 	};
 
 	let encoded = [];
 
-	code.split(' ').map(c => c.split(' ')).forEach(char=> {
+	let letters= sentence.split('');
 
-		return (typeof alphaToCode[char] === "undefined") ? "": encoded.push(alphaToCode[char]);
+	letters.forEach((letter,index)=> encoded[index]=alphaToCode[letter]);
+
+	return  encoded.join(' ');
+}
+
+function stringIncrementer(string) {
+
+	let numberRemoved = string.replace(/\d+$/,'');
+
+	let length = string.length - numberRemoved.length;
+
+	let number = string.slice(numberRemoved.length) || '0';
+
+	number = (parseInt(number)+1).toString();
+
+	while(number.length <length) {
+
+		number = '0' +number;
+	}
+
+	return numberRemoved.concat(number);
+}
+
+
+function rot13(word) {
+
+	let input  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	let output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+
+	return word.replace(/[A-Za-z]/g, (letter)=> {
+
+		// return input.charAt(output.indexOf(letter));
+
+		return output[input.indexOf(letter)];
+	});
+
+}
+
+function inArray(arr1, arr2) {
+
+	let result = [];
+
+	!!arr1.length && arr1.forEach(arr1Word => {
+
+		arr2.forEach(arr2Word =>{
+
+			arr2Word.includes(arr1Word) && !result.includes(arr1Word) && result.push(arr1Word);
+
+		});
 
 	});
 
-	console.log(encoded);
-
-	return encoded.join('');
+	return result.sort();
 
 }
+
+function isCheating(number) {
+	let results = [];
+
+	if(number > 0) {
+		let sum = (number + 1) *number/2;
+
+		let lBoundary  = Math.floor(((number - 1) * number/2)/(number + 1));
+		let hBoundary  = Math.floor(Math.sqrt(sum+1) - 1);
+
+		for(let x1 = lBoundary; x1 <hBoundary; x1++) {
+			let x2 = Math.floor((sum -x1)/(x1 +1));
+			(x1 + x2 + x1 * x2 === sum) && results.push([x1, x2]) && results.push([x2, x1]);
+		}
+	}
+	results.sort((a,b)=> (a[0] >= b[0])? 1: -1);
+
+	return results;
+
+}
+
+function permutations(string) {
+
+	let distinct = {};
+
+	recur(string, "").forEach(result => distinct[result] = true);
+
+	return Object.keys(distinct);
+}
+
+function recur(string, prefix) {
+
+	if (string.length === 0) {
+
+		return [prefix];
+	} else {
+
+		let out = [];
+
+		for (let i = 0; i < string.length; i++) {
+
+			let pre = string.substring(0, i);
+			let post = string.substring(i + 1);
+
+			out = out.concat(recur(pre + post, string[i] + prefix));
+		}
+
+		return out.sort();
+	}
+}
+

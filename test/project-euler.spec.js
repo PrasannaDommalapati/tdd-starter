@@ -129,14 +129,50 @@ describe('Project Euler', () => {
 
     	expect(math.decodeMorse('.... . -.--   .--- ..- -.. .')).to.be.equal('HEY JUDE');
     	expect(math.decodeMorse('···−−−···')).to.be.equal('SOS');
-
-
+    	expect(math.decodeMorse('.--. .-. .- ... .- -. -. .-')).to.be.equal('PRASANNA');
+    	expect(math.decodeMorse('..   .- --   .-- --- .-. -.- .. -. --.   --- -.   .--- ...')).to.be.equal('I AM WORKING ON JS');
 	});
 
-    it('should encode to morse code',() => {
+    it('should encode string to morse code',() => {
 
-    	//expect(math.encodeMorse('HEY JUDE')).to.be.equal('.... . -.--   .--- ..- -.. .');
+    	expect(math.encodeMorse('PRASANNA')).to.be.equal('.--. .-. .- ... .- -. -. .-');
+    	expect(math.encodeMorse('HEY JUDE')).to.be.equal('.... . -.--   .--- ..- -.. .');
+    	expect(math.encodeMorse('I AM WORKING ON JS')).to.be.equal('..   .- --   .-- --- .-. -.- .. -. --.   --- -.   .--- ...');
+	});
 
+    it('should return the increment of the string',()=>{
+    	expect(math.stringIncrementer('prasanna1404')).to.be.equal('prasanna1405');
+    	expect(math.stringIncrementer('prasanna')).to.be.equal('prasanna1');
+    	expect(math.stringIncrementer('prasanna001')).to.be.equal('prasanna002');
+	});
+
+    it('should return the word with replacement of char 13',()=>{
+
+    	expect(math.rot13('Test')).to.be.equal('Grfg');
+    	expect(math.rot13('rest')).to.be.equal('erfg');
+    	expect(math.rot13('beep')).to.be.equal('orrc');
+    	expect(math.rot13('hello')).to.be.equal('uryyb');
+	});
+
+    it('should return an array with common words',() => {
+
+    	expect(math.inArray(["xyz", "live", "strong"],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal(["live", "strong"]);
+    	expect(math.inArray(["live", "strong", "arp"],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal(["arp", "live", "strong"]);
+    	expect(math.inArray([],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal([]);
+	});
+
+    it('should return pair of numbers',()=>{
+
+		expect(math.isCheating(26)).to.deep.equal([[15,21], [21,15]]);
+		expect(math.isCheating(100)).to.deep.equal([]);
+	});
+
+
+    it('should return permutations of letters',() => {
+
+    	expect(math.permutations('a')).to.deep.equal(['a']);
+    	expect(math.permutations('ba')).to.deep.equal(['ab', 'ba']);
+    	expect(math.permutations('aabb')).to.deep.equal(['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa']);
 	});
 
 });
