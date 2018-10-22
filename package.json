@@ -4,7 +4,7 @@
     "description": "A starter repository for test-driving JavaScript code",
     "main": "index.js",
     "scripts": {
-        "test": "./node_modules/.bin/mocha --reporter mochawesome --no-deprecation",
+        "test": "mocha --reporter mochawesome --no-deprecation",
         "karma": "./node_modules/karma/bin/karma start karma.config.js"
     },
     "pre-commit": [
@@ -28,6 +28,9 @@
         "karma-jasmine": "^1.1.2",
         "mocha": "*",
         "mochawesome": "^3.0.3",
+        "pdf-parser": "^1.0.5",
+        "pdf-text": "^0.4.0",
+        "pdf-to-text": "0.0.7",
         "pre-commit": "^1.2.2"
     }
 }

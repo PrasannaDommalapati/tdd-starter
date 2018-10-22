@@ -1,6 +1,7 @@
-import * as math from '../src/project-euler'
+import * as math from '../src/project-euler';
 
-import {expect} from 'chai';
+import * as CodewarsController from '../src/codewars';
+import {assert, should, expect}  from 'chai'; should();
 
 import * as faker from 'faker';
 
@@ -15,18 +16,18 @@ describe('Project Euler', () => {
     	expect(sum).to.equal(num1+num2);
 	});
 
-    it('it should return the sum of multiples 3 or 5', ()=> {
+    it('should return the sum of multiples 3 or 5', ()=> {
 
     	expect(math.multiple3or5(10)).to.equal(33);
 	});
 
-    it('is multiple of three?', ()=> {
+    it('should return a number is multiple of three or not', ()=> {
 
-    	expect(math.isMultipleOfThree(6)).to.be.true;
-    	expect(math.isMultipleOfThree(5)).to.be.false;
+    	math.isMultipleOfThree(6).should.equal(true);
+    	math.isMultipleOfThree(5).should.equal(false);
 	});
 
-    it('is the smallest number divisible by 1-20', ()=>{
+    it.skip('is the smallest number divisible by 1-20', ()=>{
 
     	expect(math.divisibleByOneToTwenty(20)).to.be.equal(232792560);
 	});
@@ -55,11 +56,11 @@ describe('Project Euler', () => {
 
     it('should test a string has same number of x  and o' ,()=>{
 
-        expect(math.xoCount('xo')).to.be.true;
-        expect(math.xoCount('xxOo')).to.be.true;
-        expect(math.xoCount('xxxm')).to.be.false;
-        expect(math.xoCount('Oo')).to.be.false;
-        expect(math.xoCount('ooom')).to.be.false;
+        math.xoCount('xo').should.equal(true);
+        math.xoCount('xxOo').should.equal(true);
+        math.xoCount('xxxm').should.equal(false);
+        math.xoCount('Oo').should.equal(false);
+        math.xoCount('ooom').should.equal(false);
     });
 
     it('should remove the minimum or smallest value of an array',()=>{
@@ -148,17 +149,17 @@ describe('Project Euler', () => {
 
     it('should return the word with replacement of char 13',()=>{
 
-    	expect(math.rot13('Test')).to.be.equal('Grfg');
-    	expect(math.rot13('rest')).to.be.equal('erfg');
-    	expect(math.rot13('beep')).to.be.equal('orrc');
-    	expect(math.rot13('hello')).to.be.equal('uryyb');
+    	expect(CodewarsController.rot13('Test')).to.be.equal('Grfg');
+    	expect(CodewarsController.rot13('rest')).to.be.equal('erfg');
+    	expect(CodewarsController.rot13('beep')).to.be.equal('orrc');
+    	expect(CodewarsController.rot13('hello')).to.be.equal('uryyb');
 	});
 
     it('should return an array with common words',() => {
 
-    	expect(math.inArray(["xyz", "live", "strong"],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal(["live", "strong"]);
-    	expect(math.inArray(["live", "strong", "arp"],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal(["arp", "live", "strong"]);
-    	expect(math.inArray([],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal([]);
+    	expect(CodewarsController.inArray(["xyz", "live", "strong"],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal(["live", "strong"]);
+    	expect(CodewarsController.inArray(["live", "strong", "arp"],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal(["arp", "live", "strong"]);
+    	expect(CodewarsController.inArray([],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal([]);
 	});
 
     it('should return pair of numbers',()=>{

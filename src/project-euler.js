@@ -21,11 +21,10 @@ module.exports = {
 	decodeMorse,
 	encodeMorse,
 	stringIncrementer,
-	rot13,
-	inArray,
 	isCheating,
 	permutations
 };
+
 
 function sum(number1, number2) {
 
@@ -330,38 +329,6 @@ function stringIncrementer(string) {
 	return numberRemoved.concat(number);
 }
 
-
-function rot13(word) {
-
-	let input  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-	let output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
-
-	return word.replace(/[A-Za-z]/g, (letter)=> {
-
-		// return input.charAt(output.indexOf(letter));
-
-		return output[input.indexOf(letter)];
-	});
-
-}
-
-function inArray(arr1, arr2) {
-
-	let result = [];
-
-	!!arr1.length && arr1.forEach(arr1Word => {
-
-		arr2.forEach(arr2Word =>{
-
-			arr2Word.includes(arr1Word) && !result.includes(arr1Word) && result.push(arr1Word);
-
-		});
-
-	});
-
-	return result.sort();
-
-}
 
 function isCheating(number) {
 	let results = [];
