@@ -19,4 +19,12 @@ describe('Codewars Controller', () => {
 		expect(CodewarsController.inArray([],["lively", "alive", "harp", "sharp", "armstrong"])).to.deep.equal([]);
 	});
 
+	it('should count the triplets',() => {
+		expect(CodewarsController.greedIsGood([2, 3, 4, 6, 2])).to.be.equal(0);
+		expect(CodewarsController.greedIsGood([4, 4, 4, 3, 3])).to.be.equal(400);
+		expect(CodewarsController.greedIsGood([2, 4, 4, 5, 4])).to.be.equal(450);
+		expect(CodewarsController.greedIsGood([4, 4, 4, 3, 3])).to.be.equal(400);
+		expect(CodewarsController.greedIsGood([1,1,1,1,3])).to.be.equal(300);
+	});
+
 });
