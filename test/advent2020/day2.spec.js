@@ -1013,14 +1013,14 @@ describe('Day2 Test Suite', () => {
     })
 
     it('passwords are valid', () => {
-        let validCount = advent.passwordsAreValid(passwords);
+        let validCount = day2Controller.passwordsAreValid(passwords);
 
         expect(validCount).to.equal(556);
     });
 
     it("charecters are in correct positions in the password", () => {
 
-        let validCount = advent.passwordPosition(passwords);
+        let validCount = day2Controller.passwordPosition(passwords);
 
         expect(validCount).to.equal(605);
     });
